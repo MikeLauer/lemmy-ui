@@ -7,6 +7,7 @@ import { favIconPngUrl, favIconUrl } from "../../shared/config";
 import { IsoDataOptionalSite } from "../../shared/interfaces";
 import { buildThemeList } from "./build-themes-list";
 import { fetchIconPng } from "./fetch-icon-png";
+import substituteImageUrl from "@utils/app/substitute-image-url";
 
 const customHtmlHeader = process.env["LEMMY_UI_CUSTOM_HTML_HEADER"] || "";
 
@@ -86,7 +87,7 @@ export async function createSsrHtml(
        id="favicon"
        rel="shortcut icon"
        type="image/x-icon"
-       href=${site?.site_view.site.icon ?? favIconUrl}
+       href=${site ? substituteImageUrl(site?.site_view.site.icon) : favIconUrl}
      />
   
     <!-- Web app manifest -->

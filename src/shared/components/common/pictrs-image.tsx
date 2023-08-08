@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { Component } from "inferno";
+import substituteImageUrl from "@utils/app/substitute-image-url";
 
 const iconThumbnailSize = 96;
 const thumbnailSize = 256;
@@ -21,6 +22,7 @@ export class PictrsImage extends Component<PictrsImageProps, any> {
   }
 
   render() {
+    this.props.src = substituteImageUrl(this.props.src)
     return (
       <picture>
         <source srcSet={this.src("webp")} type="image/webp" />
